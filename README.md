@@ -47,11 +47,31 @@ A Flutter chat application powered by Firebase. Users can sign in or register wi
    flutter run -d chrome  # run on web
    ```
 
-6. **Environment variables / secrets**
-   - API keys in `firebase_options.dart` are public identifiers; no extra
-     env configuration is required unless you prefer to externalize them.
-   - You may use `--dart-define` or packages like `flutter_dotenv` if you
-     wish to keep some settings out of source control.
+6. **Firebase Configuration**
+   This project does not include a Firebase configuration file.
+   The file `firebase_options.dart` is intentionally excluded from version control to avoid exposing project-specific configuration. Each developer must configure their own Firebase project after cloning the repository.
+
+   Getting Started
+      After cloning the repository:
+      1. Create a new project in Firebase Console
+      2. Enable Cloud Firestore
+      3. Add your Android and/or iOS app to the Firebase project
+      4. Install FlutterFire CLI (if not installed):
+   ```bash
+   dart pub global activate flutterfire_cli
+   ```
+      5. Run the following command in the project root:
+   ```bash
+   flutterfire configure
+   ```
+   This will generate a new `firebase_options.dart` file inside the `lib/` directory for your own Firebase project.
+   
+*Important Notes
+
+Do not commit your generated firebase_options.dart
+Do not reuse another developer’s Firebase configuration
+Each developer should use their own Firebase backend
+Make sure to properly configure your Firestore security rules
 
 ## Project structure
 
@@ -69,6 +89,7 @@ Feel free to open issues or pull requests. Make sure to follow Dart formatter
 
 ## License
 
-This project is open-source; feel free to adapt it for your own use.
+This project is provided as-is for learning purposes.  
+Feel free to adapt or extend it under your own terms.
 
 ---
